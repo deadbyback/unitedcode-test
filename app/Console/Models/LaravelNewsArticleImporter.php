@@ -94,13 +94,21 @@ class LaravelNewsArticleImporter extends AbstractLaravelNewsImporter implements 
      */
     private function saveArticle(int $authorId): void
     {
-        Article::create([
-            'title' => $this->title,
-            'link' => $this->sourceLink,
-            'date' => $this->date,
-            'author_id' => $authorId,
-            'image_source' => $this->imageLink,
-            'tags' => $this->tagString
-        ]);
+        $articleModel = Article::firstOrNew(
+            [
+                'title' => $this->title,
+                'author_id' => $authorId
+            ],
+            [
+                'link' => $this->sourceLink,
+                'date' => $this->date,
+                'image_source' => $this->imageLink,
+                'tags' => $this->tagString
+            ]
+        );
+
+        if (!$articleModel->exists) {
+            $articleModel->save();
+        }
     }
 }

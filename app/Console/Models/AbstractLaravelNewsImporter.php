@@ -16,7 +16,7 @@ abstract class AbstractLaravelNewsImporter implements LaravelNewsImporterInterfa
     protected function sendRequest(string $url): ?string
     {
         $client = new Client([
-            'timeout'   => 10,
+            'timeout'   => 60,
             'verify'    => false
         ]);
         $response = $client->get($url);
