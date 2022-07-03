@@ -76,12 +76,12 @@ class LaravelNewsArticleImporter extends AbstractLaravelNewsImporter implements 
      */
     private function findOrSaveAuthor(): int
     {
-        $authorModel = Author::where('name', $this->authorName);
-
-        if ($authorModel === null) {
-            $authorModel = new Author();
-            $authorModel->name = $this->authorName;
-            $authorModel->link = $this->authorLink;
+        $authorModel = Author::firstOrNew(
+            ['name' => $this->authorName],
+            ['link' => $this->authorLink]
+        );
+        if (!$authorModel->exists) {
+            $authorModel->save();
         }
 
         return $authorModel->id;
@@ -94,12 +94,11 @@ class LaravelNewsArticleImporter extends AbstractLaravelNewsImporter implements 
      */
     private function saveArticle(int $authorId): void
     {
-        $articleModel = new Article();
-        $articleModel->title = $this->title;
-        $articleModel->link = $this->sourceLink;
-        $articleModel->date = $this->date;
-        $articleModel->authorId = $authorId;
-
-        $articleModel->save();
+        Article::create([
+            'title' => $this->title,
+            'link' => $this->sourceLink,
+            'date' => $this->date,
+            'author_id' => $authorId
+        ]);
     }
 }

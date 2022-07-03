@@ -43,7 +43,17 @@ class LaravelNewsImporter extends AbstractLaravelNewsImporter implements Laravel
     {
         try {
             $this->iterator = 0;
-
+            ///
+            $parsedItem = [
+                'title' => 'News',
+                'date' => time(),
+                'imageLink' => 'https://laravelnews.imgix.net/images/vite.jpg?ixlib=php-3.3.1',
+                'sourceLink' => 'https://laravel-news.com/vite-is-the-default-frontend-asset-bundler-for-laravel-applications'
+            ];
+            $articleImporter = new LaravelNewsArticleImporter($parsedItem);
+            $articleImporter->process();
+            die;
+            ///
             $parsedDataArray = $this->doParsingLoop();
 
             foreach ($parsedDataArray as $parsedItem) {

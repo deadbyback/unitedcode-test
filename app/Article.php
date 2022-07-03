@@ -22,12 +22,12 @@ class Article extends Model
     /**
      * @var integer
      */
-    public $authorId;
+    public $author_id;
 
 
     protected $table = 'articles';
     protected $fillable = [
-        'link', 'title', 'date', 'authorId', //TODO: 'tags'
+        'link', 'title', 'date', 'author_id', //TODO: 'tags'
     ];
 
 
