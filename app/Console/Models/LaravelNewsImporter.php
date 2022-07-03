@@ -4,7 +4,6 @@ namespace App\Console\Models;
 
 use DateTime;
 use GuzzleHttp\Exception\GuzzleException;
-use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 
 class LaravelNewsImporter extends AbstractLaravelNewsImporter implements LaravelNewsImporterInterface
@@ -44,18 +43,7 @@ class LaravelNewsImporter extends AbstractLaravelNewsImporter implements Laravel
     {
         try {
             $this->iterator = 0;
-            ///
-/*            $parsedItem = [
-                'category' => 'News',
-                'title' => 'Text',
-                'date' => time(),
-                'imageLink' => 'https://laravelnews.imgix.net/images/vite.jpg?ixlib=php-3.3.1',
-                'sourceLink' => 'https://laravel-news.com/vite-is-the-default-frontend-asset-bundler-for-laravel-applications'
-            ];
-            $articleImporter = new LaravelNewsArticleImporter($parsedItem);
-            $articleImporter->process();
-            die;*/
-            ///
+
             $parsedDataArray = $this->doParsingLoop();
 
             foreach ($parsedDataArray as $parsedItem) {
@@ -135,7 +123,6 @@ class LaravelNewsImporter extends AbstractLaravelNewsImporter implements Laravel
         }
 
         return [
-            'category' => $category,
             'title' => $this->hasContent($filteredNode->filter('p.mt-2')) ? $filteredNode->filter('p.mt-2')->text() : null,
             'date' => $timestamp !== false ? $timestamp : null,
             'imageLink' => $this->hasContent($filteredNode->filter('img')) ? $filteredNode->filter('img')->image()->getUri() : null,

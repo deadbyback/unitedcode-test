@@ -14,6 +14,7 @@
         "laravel/framework": "^6.20.26",
         "laravel/tinker": "^2.5",
         "laravel/ui": "*",
+        "symfony/css-selector": "^5.4",
         "symfony/dom-crawler": "^5.4"
     },
     "require-dev": {
