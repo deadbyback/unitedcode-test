@@ -98,7 +98,9 @@ class LaravelNewsArticleImporter extends AbstractLaravelNewsImporter implements 
             'title' => $this->title,
             'link' => $this->sourceLink,
             'date' => $this->date,
-            'author_id' => $authorId
+            'author_id' => $authorId,
+            'image_source' => $this->imageLink,
+            'tags' => $this->tagString
         ]);
     }
 }

@@ -23,11 +23,19 @@ class Article extends Model
      * @var integer
      */
     public $author_id;
+    /**
+     * @var string|null
+     */
+    public $image_source;
+    /**
+     * @var string|null
+     */
+    public $tags;
 
 
     protected $table = 'articles';
     protected $fillable = [
-        'link', 'title', 'date', 'author_id', //TODO: 'tags'
+        'link', 'title', 'date', 'author_id', 'image_source', 'tags' //TODO: 'tags' can be separated model
     ];
 
 
