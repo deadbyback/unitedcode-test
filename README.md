@@ -50,7 +50,22 @@ The project should be stored in a git repository located on github.com or a simi
 
 ## How to install
 
-TODO!
+1. First, clone this repository.
+2. Edit `.env` and set your database connection details.
+3. If installed via git clone or download, run `php artisan key:generate`.
+4. `php artisan migrate`
+5. `composer install`
+6. `npm install`
+
+## Start to use
+
+```bash
+$ npm run build
+$ php artisan serve
+```
+
+Then, there will be a notification that the site is waiting at some address, 
+such as this `http://127.0.0.1:8000`.
 
 ## License
 
