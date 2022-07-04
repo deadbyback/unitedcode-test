@@ -56,6 +56,9 @@ The project should be stored in a git repository located on github.com or a simi
 4. `php artisan migrate`
 5. `composer install`
 6. `npm install`
+7. After all need to import articles `php artisan news:import`. If you want to import data 
+for a different number of months, set the flag `--monthNumber`, for example, import data for 6 months:
+`php artisan news:import --monthNumber=6`.
 
 ## Start to use
 
