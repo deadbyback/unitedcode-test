@@ -8,7 +8,7 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class LaravelNewsImporter extends AbstractLaravelNewsImporter implements LaravelNewsImporterInterface
 {
-    const NEWS_TAG = 'News';
+    public const NEWS_TAG = 'News';
 
 
     /**
